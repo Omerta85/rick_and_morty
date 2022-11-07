@@ -1,0 +1,18 @@
+<h1>Location</h1>
+<mat-divider></mat-divider>
+<mat-card class="loading mt10" *ngIf="loadingLocations">
+    <div class="allign-text ">
+        Loading, please wait... <mat-icon>watch_later</mat-icon>
+    </div>
+</mat-card>
+<div class="gridContainer">
+    <mat-card class="container30">
+        <mat-card-title>{{location?.name}}</mat-card-title>
+        <mat-card-subtitle>{{location?.type}}</mat-card-subtitle>
+        <mat-card-content class="">
+            <h2>Information: </h2>
+            Dimension: {{location?.dimension}} <br>
+            Residents: <span *ngFor="let character of location?.residents; let i = index"> <b class="pointer" (click)="goToCharacter(character)">{{ResidentsNames![i]}}</b>.  </span>
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -1,0 +1,65 @@
+<h1>Rick and Morty Wiki</h1>
+<mat-divider></mat-divider>
+<mat-card class="mt10">
+  <mat-card-title>Welcome!</mat-card-title>
+  <mat-card-subtitle> On this website you will find information about the characters, locations and episodes appearing
+    in Rick and Morty!</mat-card-subtitle>
+  <mat-card-content>
+    Rick and Morty is an American adult animated science-fiction sitcom created by Justin Roiland and Dan Harmon for
+    Cartoon Network's nighttime programming
+    block Adult Swim. It currently has <b>{{episodeCount}}</b> episodes. The series follows the misadventures of cynical
+    mad scientist Rick Sanchez and his good-hearted but fretful grandson Morty Smith, who
+    split their time between domestic life and interdimensional adventures.
+  </mat-card-content>
+</mat-card>
+<mat-card class="mt10">
+  <mat-card-title>Main characters</mat-card-title>
+  <mat-card-subtitle>The five most important characters</mat-card-subtitle>
+  <mat-card-content class="">
+    <mat-divider></mat-divider>
+    <mat-card class="loading mt10" *ngIf="loadingCharacters">
+      <div class="allign-text ">
+        Loading, please wait... <mat-icon>watch_later</mat-icon>
+      </div>
+    </mat-card>
+    <div class="gridContainer" *ngIf="!loadingCharacters">
+      <mat-card class="standard-card mt30" *ngFor="let character of mainCharacters">
+        <app-character-card [Character]=character></app-character-card>
+      </mat-card>
+    </div>
+  </mat-card-content>
+</mat-card>
+<mat-card class="mt10">
+  <mat-card-title>Main locations</mat-card-title>
+  <mat-card-subtitle>The five most important locations</mat-card-subtitle>
+  <mat-card-content class="">
+    <mat-divider></mat-divider>
+    <mat-card class="loading mt10" *ngIf="loadingLocations">
+      <div class="allign-text ">
+        Loading, please wait... <mat-icon>watch_later</mat-icon>
+      </div>
+    </mat-card>
+    <div class="gridContainer" *ngIf="!loadingLocations">
+      <mat-card class="standard-card mt30" *ngFor="let location of mainLocations">
+        <app-locations-card [Location]=location></app-locations-card>
+      </mat-card>
+    </div>
+  </mat-card-content>
+</mat-card>
+<mat-card class="mt10">
+  <mat-card-title>Latest episodes</mat-card-title>
+  <mat-card-subtitle>The five latest episodes</mat-card-subtitle>
+  <mat-card-content>
+    <mat-divider></mat-divider>
+    <mat-card class="loading mt10" *ngIf="loadingEpisodes">
+      <div class="allign-text ">
+        Loading, please wait... <mat-icon>watch_later</mat-icon>
+      </div>
+    </mat-card>
+    <div class="gridContainer" *ngIf="!loadingEpisodes">
+      <mat-card *ngFor="let episode of latestEpisodes" class="standard-card mt30">
+        <app-episodes-card [Episode]="episode"></app-episodes-card>
+      </mat-card>
+    </div>
+  </mat-card-content>
+</mat-card>

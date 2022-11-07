@@ -1,0 +1,9 @@
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title><b class="pointer" (click)="goToEpisode(episode.url)">{{episode.name}}</b>
+        </mat-card-title>
+        <mat-card-subtitle><b>{{episode.episode}}</b></mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        Air Date: <b>{{episode.air_date}}</b>
+    </mat-card-content>

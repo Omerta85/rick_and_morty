@@ -1,1 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.spacer{flex: 1 1 auto;}
+
+.container{margin: 10px;}
+
+.container30{margin: 30px;}
+
+.mt10{
+    margin-top: 10px;
+}
+.mb10{
+    margin-bottom: 10px;
+}
+.mt30{
+    margin-top: 30px;
+}
+.standard-card{
+    max-width: 250px;
+}.viewImage{
+    max-width: 300px;
+    margin: auto !important ;
+}
+.gridContainer{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+.w100{
+    width: 100%;
+}
+.allignButton{
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pointer{
+    cursor: pointer;
+}
+.allign-text{
+    display: flex;
+    align-items: center;
+}
+.loading{
+    background-color: #3f51b5;
+    color: #fff;
+}

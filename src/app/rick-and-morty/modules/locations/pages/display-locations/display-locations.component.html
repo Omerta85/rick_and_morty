@@ -1,0 +1,66 @@
+<h1>Locations</h1>
+<mat-divider></mat-divider>
+
+<mat-card class="mt10">
+    <mat-card-title>Search</mat-card-title>
+    <mat-card-content>
+        <mat-form-field class="w100" appearance="fill">
+            <mat-label>Search location</mat-label>
+            <input matInput type="text" #searchLocation (keyup)="search()">
+        </mat-form-field>
+    </mat-card-content>
+</mat-card>
+
+<!--  -->
+<!-- Show Locations -->
+<!--  -->
+<mat-card class="mt10">
+    <mat-card-title *ngIf="locations.length>0">Showing from: <b>{{from+1}} to {{(from + locations.length)}}</b> from a
+        total of <b>{{locationsInfo?.count}}</b> locations <span *ngIf="searchLocation.value.length > 0"> with
+            <b>"{{searchLocation.value}}"</b></span></mat-card-title>
+    <mat-card-title *ngIf="!(locations.length > 0) ">No episodes found with name <b>"{{searchLocation.value}}"</b>
+    </mat-card-title>
+    <mat-card-content class="">
+
+        <div class="mt10 mb10" fxLayout="row">
+            <button class="allignButton" [disabled]="!locationsInfo?.prev || !(locations.length > 0)" mat-raised-button
+                color="primary" (click)="changePage(-20)">
+                <mat-icon>navigate_before</mat-icon>Previous
+            </button>
+            <span class="spacer"></span>
+            <button class="allignButton" [disabled]="!locationsInfo?.next || !(locations.length > 0)" mat-raised-button
+                color="primary" (click)="changePage(20)">Next <mat-icon>navigate_next</mat-icon></button>
+        </div>
+
+        <mat-divider></mat-divider>
+        <mat-card class="loading mt10" *ngIf="loadingLocations">
+            <div class="allign-text ">
+                Loading, please wait... <mat-icon>watch_later</mat-icon>
+            </div>
+        </mat-card>
+
+        <!--  -->
+        <!-- ngFor de las cards a mostrar -->
+        <!--  -->
+        <div class="gridContainer" *ngIf="!loadingLocations">
+            <mat-card class="standard-card mt30" *ngFor="let location of locations">
+                <app-locations-card [Location]=location></app-locations-card>
+            </mat-card>
+        </div>
+
+
+    </mat-card-content>
+    <mat-card-actions>
+        <mat-divider class="mt10"></mat-divider>
+        <div class="mt10" fxLayout="row">
+            <button class="allignButton" mat-raised-button color="primary"
+                [disabled]="!locationsInfo?.prev || !(locations.length > 0)" (click)="changePage(-20)">
+                <mat-icon>navigate_before</mat-icon>Previous
+            </button>
+            <span class="spacer"></span>
+            <button class="allignButton" mat-raised-button color="primary"
+                [disabled]="!locationsInfo?.next || !(locations.length > 0)" (click)="changePage(20)">Next <mat-icon>
+                    navigate_next</mat-icon></button>
+        </div>
+    </mat-card-actions>
+</mat-card>

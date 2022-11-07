@@ -1,0 +1,12 @@
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title><b class="pointer" (click)="goToCharacter(character.id)">{{character.name}}</b>
+        </mat-card-title>
+        <mat-card-subtitle><b>{{character.species}}</b></mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="character.image" alt="Photo of the character">
+    <mat-card-content>
+        Gender: <b>{{character.gender}}</b><br>
+        Origin: <b class="pointer" (click)="goToLocation(character.origin!.url)">{{character.origin.name}}</b><br>
+        Last known location: <b class="pointer" (click)="goToLocation(character.location!.url)">{{character.location.name}}</b><br>
+    </mat-card-content>

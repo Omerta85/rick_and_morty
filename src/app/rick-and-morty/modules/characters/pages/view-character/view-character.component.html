@@ -1,0 +1,24 @@
+<h1>Character</h1>
+<mat-divider></mat-divider>
+<mat-card class="loading mt10 " *ngIf="loadingCharacters">
+    <div class="allign-text ">
+      Loading, please wait... <mat-icon>watch_later</mat-icon>
+    </div>
+  </mat-card>
+<div class="gridContainer" *ngIf="!loadingCharacters">
+    <mat-card class="container30">
+        <mat-card-title>{{character?.name}}</mat-card-title>
+        <mat-card-subtitle>{{character?.species}} - {{character?.status}}</mat-card-subtitle>
+        <mat-card-content class="">
+            <h2>Information: </h2>
+            Gender: {{character?.gender}} <br>
+            Origin: <b class="pointer" (click)="goToLocation(character?.origin!.url)">{{character?.origin?.name}}</b><br>
+            Last known location: <b class="pointer" (click)="goToLocation(character?.location!.url)">{{character?.location?.name}}</b><br>
+            First appearance: <b class="pointer" (click)="goToFirstAppearance(character?.episode![0])">{{firstEpisodeName}}</b>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="container30">
+        <mat-card-title>Image</mat-card-title>
+            <img class="viewImage" mat-card-image [src]="character?.image" alt="Photo of the character">
+    </mat-card>
+</div>

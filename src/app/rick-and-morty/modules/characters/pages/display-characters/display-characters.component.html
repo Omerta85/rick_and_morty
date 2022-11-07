@@ -1,0 +1,43 @@
+<h1>Characters</h1>
+<mat-divider></mat-divider>
+
+<mat-card class="mt10">
+    <mat-card-title>Search</mat-card-title>
+    <mat-card-content>
+        <mat-form-field class="w100" appearance="fill">
+            <mat-label>Search character</mat-label>
+            <input matInput type="text" #searchCharacter (keyup)="search()">
+        </mat-form-field>
+    </mat-card-content>
+</mat-card>
+<mat-card class="mt10">
+    <mat-card-title *ngIf="characters.length>0">Showing from: <b>{{from+1}} to {{(from + characters.length)}}</b> from a total of <b>{{characterInfo?.count}}</b> characters <span  *ngIf="searchCharacter.value.length > 0"> with <b>"{{searchCharacter.value}}"</b></span></mat-card-title>
+    <mat-card-title *ngIf="!(characters.length > 0) ">No characters found with name <b>"{{searchCharacter.value}}"</b></mat-card-title>
+    <mat-card-content class="">
+        <div class="mt10 mb10" fxLayout="row" >
+            <button class="allignButton" [disabled]="!characterInfo?.prev || !(characters.length > 0)" mat-raised-button color="primary" (click)="changePage(-20)"><mat-icon>navigate_before</mat-icon>Previous</button>
+            <span class="spacer"></span>
+            <button class="allignButton" [disabled]="!characterInfo?.next || !(characters.length > 0)" mat-raised-button color="primary" (click)="changePage(20)">Next <mat-icon>navigate_next</mat-icon></button>
+        </div>
+        <mat-divider></mat-divider>
+        <mat-card class="loading mt10" *ngIf="loadingCharacters">
+            <div class="allign-text ">
+                Loading, please wait... <mat-icon>watch_later</mat-icon>
+            </div>
+        </mat-card>
+        <div class="gridContainer" *ngIf="!loadingCharacters">
+            <mat-card class="standard-card mt30" *ngFor="let character of characters">
+                <app-character-card [Character]=character ></app-character-card>
+            </mat-card>
+        </div>
+
+    </mat-card-content>
+    <mat-card-actions>
+        <mat-divider class="mt10"></mat-divider>
+        <div class="mt10" fxLayout="row">
+            <button class="allignButton"  mat-raised-button color="primary" [disabled]="!characterInfo?.prev || !(characters.length > 0)" (click)="changePage(-20)"><mat-icon>navigate_before</mat-icon>Previous</button>
+            <span class="spacer"></span>
+            <button class="allignButton" mat-raised-button color="primary"  [disabled]="!characterInfo?.next || !(characters.length > 0)" (click)="changePage(20)">Next <mat-icon>navigate_next</mat-icon></button>
+        </div>
+    </mat-card-actions>
+</mat-card>

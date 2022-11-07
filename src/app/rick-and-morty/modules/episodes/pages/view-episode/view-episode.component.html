@@ -1,0 +1,18 @@
+<h1>Episode</h1>
+<mat-divider></mat-divider>
+<mat-card class="loading mt10" *ngIf="loadingEpisodes">
+    <div class="allign-text ">
+      Loading, please wait... <mat-icon>watch_later</mat-icon>
+    </div>
+</mat-card>
+<div class="gridContainer">
+    <mat-card class="container30">
+        <mat-card-title>{{episode?.name}}</mat-card-title>
+        <mat-card-subtitle>{{episode?.episode}}</mat-card-subtitle>
+        <mat-card-content class="">
+            <h2>Information: </h2>
+            Air date: {{episode?.air_date}} <br>
+            Characters: <span *ngFor="let character of episode?.characters; let i = index"> <b class="pointer" (click)="goToEpisodeCharacter(character)">{{episodeCharacterNames[i]}}</b>.  </span>
+        </mat-card-content>
+    </mat-card>
+</div>
